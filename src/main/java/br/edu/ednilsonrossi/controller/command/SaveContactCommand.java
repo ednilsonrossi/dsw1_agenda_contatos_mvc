@@ -3,6 +3,7 @@ package br.edu.ednilsonrossi.controller.command;
 import java.io.IOException;
 
 import br.edu.ednilsonrossi.model.dao.ContactDao;
+import br.edu.ednilsonrossi.model.dao.ContactDaoFactory;
 import br.edu.ednilsonrossi.model.entity.Contact;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,7 +17,9 @@ public class SaveContactCommand implements Command {
 		var name = request.getParameter("textName");
 		var fone = request.getParameter("textFone");
 		var email = request.getParameter("textEmail");
-		ContactDao dao = new ContactDao();
+		
+		// ContactDao dao = new ContactDaoFactory(ContactDaoType.JSON).factory();
+		ContactDao dao = new ContactDaoFactory().factory();
 		
 		Contact contact = new Contact(name, fone, email);
 		boolean saved = dao.create(contact);

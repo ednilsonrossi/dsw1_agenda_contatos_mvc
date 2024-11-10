@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 
 import br.edu.ednilsonrossi.model.dao.ContactDao;
+import br.edu.ednilsonrossi.model.dao.ContactDaoFactory;
+import br.edu.ednilsonrossi.model.dao.ContactDaoFactory.ContactDaoType;
 import br.edu.ednilsonrossi.model.entity.Contact;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,7 +17,9 @@ public class ListContactsCommand implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		ContactDao dao = new ContactDao();
+		// ContactDao dao = new ContactDaoFactory(ContactDaoType.JSON).factory();
+		ContactDao dao = new ContactDaoFactory().factory();
+		
 		List<Contact> contacts = dao.retrieve();
 		request.setAttribute("contacts", contacts);
 		

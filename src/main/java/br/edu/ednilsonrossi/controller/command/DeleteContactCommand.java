@@ -3,6 +3,7 @@ package br.edu.ednilsonrossi.controller.command;
 import java.io.IOException;
 
 import br.edu.ednilsonrossi.model.dao.ContactDao;
+import br.edu.ednilsonrossi.model.dao.ContactDaoFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,7 +15,10 @@ public class DeleteContactCommand implements Command {
 			throws ServletException, IOException {
 		
 		String email = request.getParameter("email");
-		ContactDao dao = new ContactDao();
+		
+		// ContactDao dao = new ContactDaoFactory(ContactDaoType.JSON).factory();
+		ContactDao dao = new ContactDaoFactory().factory();
+		
 		var contact = dao.retrieve(email);
 		
 		dao.delete(contact);
