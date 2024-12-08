@@ -65,6 +65,15 @@ class JsonContactDao implements ContactDao {
 		readJsonFile();
 		return new ArrayList<Contact>(contacts);
 	}
+	
+	
+
+	@Override
+	public List<Contact> findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	@Override
 	public boolean update(Contact updatedContact, String oldEmail) {

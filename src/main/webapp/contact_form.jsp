@@ -26,19 +26,21 @@
 
 		<form class="bg-white p-4 rounded-3 shadow" action="contact.do?action=newContact" method="post">
 			<div class="mb-3">
-				<label for="name" class="form-label">Nome</label> <input type="text"
+				<label for="name" class="form-label">Nome</label> 
+				<input type="text"
 					class="form-control" id="name" name="textName"
-					placeholder="Digite nome completo do contato.">
+					placeholder="Digite nome completo do contato." required="required">
 			</div>
 			<div class="mb-3">
-				<label for="fone" class="form-label">Telefone</label> <input
+				<label for="fone" class="form-label">Telefone</label> 
+				<input
 					type="tel" class="form-control" id="fone" name="textFone"
-					placeholder="(xx) xxxxx-xxxx">
+					placeholder="(xx) xxxxx-xxxx" required="required">
 			</div>
 			<div class="mb-3">
-				<label for="email" class="form-label">E-mail</label> <input
-					type="email" class="form-control" id="email" name="textEmail"
-					placeholder="Digite o e-mail do contato.">
+				<label for="email" class="form-label">E-mail</label> 
+				<input type="email" class="form-control" id="email" name="textEmail"
+					placeholder="Digite o e-mail do contato." required="required">
 			</div>
 
 			<button type="submit" class="btn btn-warning"

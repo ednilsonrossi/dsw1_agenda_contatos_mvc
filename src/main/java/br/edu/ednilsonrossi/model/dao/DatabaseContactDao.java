@@ -95,6 +95,33 @@ public class DatabaseContactDao implements ContactDao {
 	}
 
 	@Override
+	public List<Contact> findByName(String name) {
+		var contacts = new LinkedList<Contact>();
+		if (name != null && !name.isEmpty()) {
+			var sql = "SELECT * FROM tb_contacts WHERE name LIKE '%" + name + "%' ORDER BY name";
+			
+			try(var conn = ContactsDatabaseConnection.getConnection();
+				var stm = conn.createStatement()) {
+				
+				var result = stm.executeQuery(sql);
+				
+				while(result.next()) {
+					var contact = new Contact();
+					contact.setEmail(result.getString("email"));
+					contact.setFone(result.getString("fone"));
+					contact.setName(result.getString("name"));
+					contacts.add(contact);
+				}
+				
+			} catch (SQLException sqlEx) {
+				sqlEx.printStackTrace();
+				contacts = new LinkedList<Contact>();
+			}
+		}
+		return contacts;
+	}
+
+	@Override
 	public boolean update(Contact updatedContact, String oldEmail) {
 		if (updatedContact != null && !oldEmail.isEmpty()) {
 			var sql = "UPDATE tb_contacts SET " +

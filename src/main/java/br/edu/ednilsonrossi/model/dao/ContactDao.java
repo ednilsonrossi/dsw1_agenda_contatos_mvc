@@ -13,6 +13,8 @@ public interface ContactDao {
 	
 	List<Contact> retrieve();
 	
+	List<Contact> findByName(String name);
+	
 	boolean update(Contact updatedContact, String oldEmail);
 	
 	boolean delete(Contact contact);

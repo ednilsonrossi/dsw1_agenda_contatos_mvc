@@ -58,6 +58,13 @@ class MonostateContactDao implements ContactDao{
 		return new ArrayList<Contact>(datasource);
 	}
 	
+	
+	@Override
+	public List<Contact> findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public boolean update(Contact updatedContact, String oldEmail) {
 		var inDatasource = datasource.stream()
 				.filter(c -> c.getEmail().equalsIgnoreCase(oldEmail))
