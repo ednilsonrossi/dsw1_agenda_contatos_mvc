@@ -8,6 +8,7 @@ import br.edu.ednilsonrossi.controller.command.ErrorCommand;
 import br.edu.ednilsonrossi.controller.command.FormContactCommand;
 import br.edu.ednilsonrossi.controller.command.ListContactsCommand;
 import br.edu.ednilsonrossi.controller.command.SaveContactCommand;
+import br.edu.ednilsonrossi.controller.command.SearchContactCommand;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -39,6 +40,8 @@ public class ContactServlet extends HttpServlet {
 			command = new FormContactCommand();
 		}else if ("delete".equals(action)) {
 			command = new DeleteContactCommand();
+		}else if("searchContact".equals(action)) {
+			command = new SearchContactCommand();
 		} else {
 			command = new ErrorCommand();
 		}
