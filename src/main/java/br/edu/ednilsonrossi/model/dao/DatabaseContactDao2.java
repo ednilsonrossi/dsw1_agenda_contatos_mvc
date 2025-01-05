@@ -8,17 +8,10 @@ import java.util.List;
 import br.edu.ednilsonrossi.model.dao.connection.DatabaseConnection;
 import br.edu.ednilsonrossi.model.entity.Contact;
 
-public class DatabaseContactDao implements ContactDao {
+public class DatabaseContactDao2 implements ContactDao {
 
-	private static final String CREATE_TABLE = "CREATE TABLE tb_contacts (\n"
-			+ "    name VARCHAR(150) NOT NULL,\n"
-			+ "    fone VARCHAR(20),\n"
-			+ "    email VARCHAR(128) NOT NULL,\n"
-			+ "    username VARCHAR(128) NOT NULL,\n"
-			+ "    PRIMARY KEY (username, email),\n"
-			+ "    FOREIGN KEY (username) REFERENCES tb_user(email) ON DELETE CASCADE\n"
-			+ ");";
-	private static final String INSERT = "INSERT INTO tb_contacts (name, fone, email, username) VALUES (?, ?, ?, ?)";
+	private static final String INSERT = "INSERT INTO tb_contacts (name, fone, email)"
+			+ " VALUES (?, ?, ?)";
 	private static final String SELECT_BY_EMAIL = "SELECT * FROM tb_contacts WHERE email = ?";
 	private static final String SELECT_BY_NAME = "SELECT * FROM tb_contacts WHERE name LIKE ? ORDER BY name";
 	private static final String SELECT_ALL = "SELECT * FROM tb_contacts ORDER BY name";
