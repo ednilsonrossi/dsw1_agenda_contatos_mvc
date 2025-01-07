@@ -4,14 +4,14 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<jsp:include page="includes/head.html" />
+<jsp:include page="../includes/head.html" />
 <body>
-	<jsp:include page="includes/navBar.jsp" />
+	<jsp:include page="./includes/navBarLoggedIn.jsp" />
 
 	<%
 	var contacts = (List<Contact>) request.getAttribute("contacts");
 	if (contacts == null || contacts.isEmpty()) {
-		response.sendRedirect("index.jsp");
+		response.sendRedirect(request.getContextPath() + "/loggedin/logged.jsp");
 	} else {
 	%>
 	<main class="container-sm flex-grow-1  justify-content-center">
@@ -76,6 +76,6 @@
 
 	</main>
 	<%} %>
-	<jsp:include page="includes/scripts.html" />
+	<jsp:include page="../includes/scripts.html" />
 </body>
 </html>

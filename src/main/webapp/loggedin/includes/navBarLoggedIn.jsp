@@ -1,3 +1,4 @@
+<%@page import="br.edu.ednilsonrossi.model.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -13,10 +14,18 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="index.jsp">Home</a></li>
-				<li class="nav-item"><a class="nav-link" href="front.do?action=getLoginForm">Log In</a></li>
-				<li class="nav-item"><a class="nav-link" href="front.do?action=getUserForm">Novo Usuário</a></li>
+					aria-current="page" href="<%= request.getContextPath() %>/contact.do?action=logged">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/contact.do?action=getForm">Novo Contato</a></li>
+				<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/contact.do?action=list">Contatos</a></li>
+				<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/contact.do?action=logoff">Log Off</a></li>
 			</ul>
+			<%
+			var user = (User) session.getAttribute("user_id");
+			%>
+			<div class="nav justify-content-end">
+				<%= user.getName() %>
+			</div>
+		
 		</div>
 	</div>
 </nav>

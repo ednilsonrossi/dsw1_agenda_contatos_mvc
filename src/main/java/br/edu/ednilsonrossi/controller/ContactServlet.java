@@ -7,6 +7,8 @@ import br.edu.ednilsonrossi.controller.command.DeleteContactCommand;
 import br.edu.ednilsonrossi.controller.command.ErrorCommand;
 import br.edu.ednilsonrossi.controller.command.FormContactCommand;
 import br.edu.ednilsonrossi.controller.command.ListContactsCommand;
+import br.edu.ednilsonrossi.controller.command.LoggedCommand;
+import br.edu.ednilsonrossi.controller.command.LogoffCommand;
 import br.edu.ednilsonrossi.controller.command.SaveContactCommand;
 import br.edu.ednilsonrossi.controller.command.SearchContactCommand;
 import jakarta.servlet.ServletException;
@@ -32,7 +34,9 @@ public class ContactServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		Command command;
 		
-		if ("list".equals(action)) {
+		if ("logged".equals(action) ) {
+			command = new LoggedCommand();
+		}else if("list".equals(action)) {
 			command = new ListContactsCommand();
 		} else if ("newContact".equals(action)) {
 			command = new SaveContactCommand();
@@ -42,6 +46,8 @@ public class ContactServlet extends HttpServlet {
 			command = new DeleteContactCommand();
 		}else if("searchContact".equals(action)) {
 			command = new SearchContactCommand();
+		} else if ("logoff".equals(action)) {
+			command = new LogoffCommand();
 		} else {
 			command = new ErrorCommand();
 		}

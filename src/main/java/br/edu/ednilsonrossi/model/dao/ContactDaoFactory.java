@@ -12,16 +12,17 @@ public class ContactDaoFactory {
 	}
 	
 	public ContactDao factory() {
-		switch (type) {
-			case MONOSTATE:
-				return new MonostateContactDao();
-			case JSON:
-				return new JsonContactDao();
-			case DATABASE:
-				return new DatabaseContactDao();
-			default:
-				throw new IllegalArgumentException("Tipo de contato desconhecido: " + type);
-		}
+//		switch (type) {
+//			case MONOSTATE:
+//				return new MonostateContactDao();
+//			case JSON:
+//				return new JsonContactDao();
+//			case DATABASE:
+//				return new DatabaseContactDao();
+//			default:
+//				throw new IllegalArgumentException("Tipo de contato desconhecido: " + type);
+//		}
+		return new DatabaseContactDao();
 	}
 
 	public enum ContactDaoType {

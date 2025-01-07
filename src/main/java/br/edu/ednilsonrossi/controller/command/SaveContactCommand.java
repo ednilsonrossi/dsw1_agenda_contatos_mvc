@@ -5,6 +5,7 @@ import java.io.IOException;
 import br.edu.ednilsonrossi.model.dao.ContactDao;
 import br.edu.ednilsonrossi.model.dao.ContactDaoFactory;
 import br.edu.ednilsonrossi.model.entity.Contact;
+import br.edu.ednilsonrossi.model.entity.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,11 +19,13 @@ public class SaveContactCommand implements Command {
 		var fone = request.getParameter("textFone");
 		var email = request.getParameter("textEmail");
 		
-		// ContactDao dao = new ContactDaoFactory(ContactDaoType.JSON).factory();
+		var user = (User) request.getSession(false).getAttribute("user_id");
+		
+		
 		ContactDao dao = new ContactDaoFactory().factory();
 		
 		Contact contact = new Contact(name, fone, email);
-		boolean saved = dao.create(contact);
+		boolean saved = dao.create(user, contact);
 		
 		String message;
 		if (saved) {
@@ -34,7 +37,7 @@ public class SaveContactCommand implements Command {
 		request.setAttribute("message", message);
 		request.setAttribute("saved", saved);
 		
-		return "contact_form.jsp";
+		return "/loggedin/contact_form.jsp";
 	}
 
 }
