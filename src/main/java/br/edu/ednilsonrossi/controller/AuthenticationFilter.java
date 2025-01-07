@@ -12,7 +12,6 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
-//@WebFilter(urlPatterns = "/loggedin/*")
 @WebFilter(urlPatterns = {"/loggedin/*", "/contact.do"})
 public class AuthenticationFilter implements Filter {
 
@@ -35,8 +34,7 @@ public class AuthenticationFilter implements Filter {
 			
 			var dispatcher = request.getRequestDispatcher("front.do?action=getLoginForm");
 			dispatcher.forward(request, response);
-		}
-		
+		}	
 	}
 
 	@Override
