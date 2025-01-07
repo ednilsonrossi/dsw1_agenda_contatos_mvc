@@ -2,6 +2,7 @@ package br.edu.ednilsonrossi.controller;
 
 import java.io.IOException;
 
+import br.edu.ednilsonrossi.controller.command.ChangeThemeCommand;
 import br.edu.ednilsonrossi.controller.command.Command;
 import br.edu.ednilsonrossi.controller.command.DeleteContactCommand;
 import br.edu.ednilsonrossi.controller.command.ErrorCommand;
@@ -48,6 +49,8 @@ public class ContactServlet extends HttpServlet {
 			command = new SearchContactCommand();
 		} else if ("logoff".equals(action)) {
 			command = new LogoffCommand();
+		} else if ("changeTheme".equals(action)) { 
+			command = new ChangeThemeCommand();
 		} else {
 			command = new ErrorCommand();
 		}

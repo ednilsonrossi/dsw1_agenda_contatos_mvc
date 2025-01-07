@@ -2,7 +2,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%
+var defaultTheme = true;
+var cookies = request.getCookies();
+for (Cookie c : cookies) {
+	if (c.getName().equals("navbarTheme")) {
+		if (c.getValue().equals("blue")) {
+			defaultTheme = false;
+		}
+		break;
+	}
+}
+%>
+
+<%if(defaultTheme){ %>
 <nav class="navbar navbar-expand-lg bg-warning">
+<%} else { %>
+<nav class="navbar navbar-expand-lg bg-info">
+<%} %>
 	<div class="container-fluid">
 		<a class="navbar-brand" href="index.jsp">DWS1</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -18,6 +35,7 @@
 				<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/contact.do?action=getForm">Novo Contato</a></li>
 				<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/contact.do?action=list">Contatos</a></li>
 				<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/contact.do?action=logoff">Log Off</a></li>
+				<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/contact.do?action=changeTheme">Alterar Tema</a></li>
 			</ul>
 			<%
 			var user = (User) session.getAttribute("user_id");
