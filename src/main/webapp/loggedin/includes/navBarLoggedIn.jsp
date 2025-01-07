@@ -14,7 +14,6 @@ for (Cookie c : cookies) {
 	}
 }
 %>
-
 <%if(defaultTheme){ %>
 <nav class="navbar navbar-expand-lg bg-warning">
 <%} else { %>
@@ -37,9 +36,7 @@ for (Cookie c : cookies) {
 				<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/contact.do?action=logoff">Log Off</a></li>
 				<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/contact.do?action=changeTheme">Alterar Tema</a></li>
 			</ul>
-			<%
-			var user = (User) session.getAttribute("user_id");
-			%>
+			<% var user = (User) session.getAttribute("user_id"); %>
 			<div class="nav justify-content-end">
 				<%= user.getName() %>
 			</div>

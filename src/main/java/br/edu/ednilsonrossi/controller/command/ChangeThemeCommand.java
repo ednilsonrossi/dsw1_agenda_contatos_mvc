@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class ChangeThemeCommand implements Command {
-
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -37,5 +36,4 @@ public class ChangeThemeCommand implements Command {
 		
 		return "contact.do?action=logged";
 	}
-	
 }
